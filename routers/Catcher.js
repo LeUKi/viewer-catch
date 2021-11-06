@@ -31,15 +31,15 @@ const getDB = require('../mongoDB')
  *        description: 缺少参数 d
  */
 router.post('/viewerCatch', async (ctx, next) => {
-    if (!(ctx.header.origin || ctx.query.d)) {
+    if (!(ctx.header.origin || ctx.request.body.d)) {
         ctx.body = {
             code: -1
         }
         return
     }
     let data = {
-        d: ctx.query.d || ctx.header.origin.replace(/^https?:\/\//, ''),
-        p: ctx.query.p || "/",
+        d: ctx.request.body.d || ctx.header.origin.replace(/^https?:\/\//, ''),
+        p: ctx.request.body.p || "/",
     }
     console.log(data);
     let result1 = getDB.aggregate('page', [{
@@ -91,7 +91,7 @@ router.post('/viewerCatch', async (ctx, next) => {
             getDB.updateOne('page', data, {
                 $inc: {
                     pv: 1,
-                    uv: JSON.parse(ctx.query.nv || 'false') ? 1 : 0
+                    uv: JSON.parse(ctx.request.body.nv || 'false') ? 1 : 0
                 }
             })
         } else {
