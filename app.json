@@ -1,0 +1,26 @@
+{
+    "name": "viewer-catch",
+    "description": "a catcher to count Views and Likes.",
+    "keywords": ["count","views","likes","catch","viewer"],
+    "env": {
+        "DBURL": {
+            "description": "MongoDB Connection String",
+            "value": "mongodb+srv://"
+        },
+        "DBNAME": {
+            "description": "Collection Name",
+            "value": ""
+        },
+        "SERVICEURL": {
+            "description": "Service URL",
+            "value": "http://xx.yy"
+        },
+        "PORT": {
+            "description": "Service PORT",
+            "value": "80"
+        }
+    },
+    "website": "http://lafish.fun/viewer-catch",
+    "repository": "https://github.com/LeUKi/viewer-catch",
+    "stack": "nodejs"
+}
