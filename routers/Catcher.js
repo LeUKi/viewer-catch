@@ -10,17 +10,17 @@ const getDB = require('../mongoDB')
  *       - Catcher
  *     parameters:
  *       - name: d
- *         in: query
+ *         in: header
  *         required: true
  *         description: dDomain 主机域名 必填
  *         type: string
  *       - name: p
- *         in: query
+ *         in: header
  *         required: false
  *         description: Path 访问路径 默认为"/" 可指定
  *         type: string 
  *       - name: nv
- *         in: query
+ *         in: header
  *         required: false
  *         description: NewViewer 默认为false UV统计相关
  *         type: string 
@@ -31,15 +31,15 @@ const getDB = require('../mongoDB')
  *        description: 缺少参数 d
  */
 router.post('/viewerCatch', async (ctx, next) => {
-    if (!(ctx.header.origin || ctx.request.body.d)) {
+    if (!(ctx.header.origin || ctx.header.d)) {
         ctx.body = {
             code: -1
         }
         return
     }
     let data = {
-        d: ctx.request.body.d || ctx.header.origin.replace(/^https?:\/\//, ''),
-        p: ctx.request.body.p || "/",
+        d: ctx.header.d || ctx.header.origin.replace(/^https?:\/\//, ''),
+        p: ctx.header.p || "/",
     }
     console.log(data);
     let result1 = getDB.aggregate('page', [{
@@ -91,7 +91,7 @@ router.post('/viewerCatch', async (ctx, next) => {
             getDB.updateOne('page', data, {
                 $inc: {
                     pv: 1,
-                    uv: JSON.parse(ctx.request.body.nv || 'false') ? 1 : 0
+                    uv: JSON.parse(ctx.header.nv || 'false') ? 1 : 0
                 }
             })
         } else {
