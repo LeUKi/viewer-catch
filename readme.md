@@ -63,13 +63,13 @@ head 标签中添加以下这段代码，当然也可以替换成你架设的服
 以下都是可行的写法：
 
 ```html
-<style>.VCC_visibility{visibility: hidden;}</style>
+<style>.VCC_before{visibility: hidden;}</style>
 <div class='VCC'>
   <div> 页面UV:<span class='VCC_uv'>正在获取</span> </div>
-  <div> 页面PV:<span class='VCC_pv VCC_visibility'></span> </div>
-  <div class='VCC_visibility'> 页面点赞数:<span class='VCC_like'></span> </div>
+  <div> 页面PV:<span class='VCC_pv VCC_before'></span> </div>
+  <div class='VCC_before'> 页面点赞数:<span class='VCC_like'></span> </div>
 </div>
-<div class='VCC VCC_visibility VCC_uv_sum'></div>
+<div class='VCC VCC_before VCC_uv_sum'></div>
 <div class='VCC VCC_before VCC_pv_sum' showin='/'></div>
 <div class='VCC VCC_before VCC_like_sum' hidein='/'></div>
 
