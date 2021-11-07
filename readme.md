@@ -38,12 +38,13 @@ head 标签中添加以下这段代码，当然也可以替换成你架设的服
 
 虽然不是必要的，但如果你不需要，建议你使用`简单引入`。
 
-标准引入提供了 8 个 CSS 类名：
+标准引入提供了 8 个 CSS 类名、2 个元素属性：
 
 - 控制类：
 
   - `.VCC` 关键类
   - `.VCC_visibility`  当数据类替换完成后，该类元素的 `style.visibility` 将赋为 `visible`。
+  - `.VCC_path`  当数据类替换完成后，当且 `location.pathname` 与该类元素的 `pathif` 属性值相等或 `pathifnot` 属性值不等时，其 `style.visibility` 将赋为 `visible`。
 
 - 数据类：
 
@@ -65,7 +66,10 @@ head 标签中添加以下这段代码，当然也可以替换成你架设的服
   <div> 页面PV:<span class='VCC_pv VCC_visibility'></span> </div>
   <div class='VCC_visibility'> 页面点赞数:<span class='VCC_like'></span> </div>
 </div>
-<div class='VCC VCC_visibility VCC_like_sum'></div>
+<div class='VCC VCC_visibility VCC_uv_sum'></div>
+<div class='VCC VCC_path VCC_pv_sum' pathifnot='/'></div>
+<div class='VCC VCC_path VCC_like_sum' pathifnot='/'></div>
+
 ```
 
 ### 简单引入
