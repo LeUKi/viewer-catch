@@ -40,11 +40,14 @@ head 标签中添加以下这段代码，当然也可以替换成你架设的服
 
 标准引入提供了 8 个 CSS 类名、2 个元素属性：
 
-- 控制类：
+- 控制类与属性：
 
   - `.VCC` 关键类
-  - `.VCC_visibility`  当数据类替换完成后，该类元素的 `style.visibility` 将赋为 `visible`。
-  - `.VCC_path`  当数据类替换完成后，当且 `location.pathname` 与该类元素的 `pathif` 属性值相等或 `pathifnot` 属性值不等时，其 `style.visibility` 将赋为 `visible`。
+  - `.VCC_giveLike` 点赞监听类，当数据类替换完成后，监听该类元素的点击事件，触发后所有 `.VCC_like` 元素将显示最新的点赞数。
+  - `.VCC_before` 预处理类，当数据类替换完成后，且类元素有以下情况时，`.VCC_before` 类将被去除：
+    - `vcc_showin` 属性存在且值为当前路径时
+    - `vcc_hidein` 属性存在且值不为当前路径时
+    - `vcc_showin` 与 `vcc_showin` 属性都不存在时
 
 - 数据类：
 
@@ -67,8 +70,8 @@ head 标签中添加以下这段代码，当然也可以替换成你架设的服
   <div class='VCC_visibility'> 页面点赞数:<span class='VCC_like'></span> </div>
 </div>
 <div class='VCC VCC_visibility VCC_uv_sum'></div>
-<div class='VCC VCC_path VCC_pv_sum' pathifnot='/'></div>
-<div class='VCC VCC_path VCC_like_sum' pathifnot='/'></div>
+<div class='VCC VCC_before VCC_pv_sum' showin='/'></div>
+<div class='VCC VCC_before VCC_like_sum' hidein='/'></div>
 
 ```
 

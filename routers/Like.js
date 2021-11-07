@@ -2,7 +2,7 @@ const router = require('../node_modules/koa-router')()
 const getDB = require('../mongoDB')
 /**
  * @swagger
- * /Like:
+ * /like:
  *   post:
  *     summary: 点赞
  *     description: 返回点赞后的数据，点赞不能撤回
@@ -10,12 +10,12 @@ const getDB = require('../mongoDB')
  *       - Like
  *     parameters:
  *       - name: d
- *         in: query
+ *         in: header
  *         required: true
  *         description: dDomain 主机域名 必填
  *         type: string
  *       - name: p
- *         in: query
+ *         in: header
  *         required: false
  *         description: Path 访问路径 默认为"/" 可指定
  *         type: string 
@@ -26,15 +26,15 @@ const getDB = require('../mongoDB')
  *        description: 缺少参数 d
  */
 router.post('/like', async (ctx, next) => {
-    if (!(ctx.header.origin || ctx.query.d)) {
+    if (!(ctx.header.origin || ctx.header.d)) {
         ctx.body = {
             code: -1
         }
         return
     }
     let data = {
-        d: ctx.query.d || ctx.header.origin.replace(/^https?:\/\//, ''),
-        p: ctx.query.p || "/",
+        d: ctx.header.d || ctx.header.origin.replace(/^https?:\/\//, ''),
+        p: ctx.header.p || "/",
     }
     console.log(data);
     let result = await getDB.aggregate('page', [{
