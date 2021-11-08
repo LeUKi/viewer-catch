@@ -1,6 +1,8 @@
 # viewer-catch
 
-一个站点流量与赞的统计平台。基于 Koa 和 MongoDB。
+> 一个站点流量与点赞的统计平台。基于 Koa 和 MongoDB。
+
+![GitHub](https://img.shields.io/github/license/LeUKi/viewer-catch) ![GitHub last commit](https://img.shields.io/github/last-commit/LeUKi/viewer-catch)
 
 ## 背景
 
@@ -70,8 +72,8 @@ head 标签中添加以下这段代码，当然也可以替换成你架设的服
   <div class='VCC_before'> 页面点赞数:<span class='VCC_like'></span> </div>
 </div>
 <div class='VCC VCC_before VCC_uv_sum'></div>
-<div class='VCC VCC_before VCC_pv_sum' showin='/'></div>
-<div class='VCC VCC_before VCC_like_sum' hidein='/'></div>
+<div class='VCC VCC_before VCC_pv_sum' vcc_showin='/'></div>
+<div class='VCC VCC_before VCC_like_sum' vcc_hidein='/'></div>
 
 ```
 
