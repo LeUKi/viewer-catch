@@ -6,7 +6,7 @@ const swaggerDefinition = {
     version: '1.0.0',
     description: 'API',
   },
-  host: '127.0.0.1',
+  host: 'viewer-catch.herokuapp.com',
   basePath: '/'
 };
 const options = {
